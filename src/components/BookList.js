@@ -7,24 +7,16 @@ export default class BookList extends React.Component {
     } else {
         
         const newBookList = books.items.map(book => {
-        let myPrice = '';
-        if(book.saleInfo.saleability === 'FOR_SALE'){
-            myPrice = `$ ${book.saleInfo.listPrice.amount.toString()}`;
-        }
-        else if(book.saleInfo.saleability === 'NOT_FOR_SALE'){
-            myPrice = 'Not for sale.';
-        }
-        console.log(myPrice);
             return (
-          <li className={book.volumeInfo.title} key={book.id}>
+          <li key={book.id}>
             <img
-              src={book.volumeInfo.imageLinks.smallThumbnail}
-              alt="picture of book cover"
+              src={book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.smallThumbnail : ''}
+              alt="book cover"
             />
-            <h3>{book.volumeInfo.title}</h3>
-            <h4>{book.volumeInfo.authors}</h4>
-            <section>{myPrice}</section>
-            <p>{book.volumeInfo.description}</p>
+            <h3>{book.volumeInfo.title ? book.volumeInfo.title : 'No title.'}</h3>
+            <h4>{book.volumeInfo.authors ? book.volumeInfo.authors : 'No author.'}</h4>
+            <section>{book.saleInfo.listPrice ? '$' + book.saleInfo.listPrice.amount : 'Free'}</section>
+            <p>{book.volumeInfo.description ? book.volumeInfo.description : ''}</p>
           </li>
         );
       });
@@ -35,7 +27,4 @@ export default class BookList extends React.Component {
   render() {
     return <ul>{this.displayBookList(this.props.books)}</ul>;
   }
-}
-
-{
 }
