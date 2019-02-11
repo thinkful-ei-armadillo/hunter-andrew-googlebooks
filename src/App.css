@@ -1,0 +1,25 @@
+*{
+    text-align: center;
+    list-style: none;
+    
+}
+
+h1{
+    text-align: center;
+    background: black;
+    color: white;
+    padding: 50px;
+    vertical-align: middle;
+    column-count: auto;
+    margin:0;
+}
+
+li{
+    border: 2px solid grey;
+    margin: 5px;
+}
+
+.filters{
+    background: lightgrey;
+    padding: 15px;
+}

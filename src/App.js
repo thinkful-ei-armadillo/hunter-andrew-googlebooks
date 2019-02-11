@@ -3,6 +3,7 @@ import SearchBar from "./components/SearchBar";
 import BookList from "./components/BookList";
 import PrintType from "./components/PrintType";
 import BookType from "./components/BookType";
+import './App.css';
 // const ApiKey = "AIzaSyARz0BlFDU_2oruYz0gzwEbTSWL5MH6sow";
 
 class App extends Component {
@@ -53,8 +54,10 @@ class App extends Component {
       <div>
         <h1>Google Book Search</h1>
         <SearchBar handleSearchTerm={this.handleSearchTerm} />
-        <PrintType handlePrintType={this.handlePrintType}/>
-        <BookType handleBookType={this.handleBookType}/>
+        <div className="filters">
+          <PrintType handlePrintType={this.handlePrintType}/>
+          <BookType handleBookType={this.handleBookType}/>
+        </div>
         <BookList books={this.state.books} />
       </div>
     );
