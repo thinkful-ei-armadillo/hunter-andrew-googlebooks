@@ -5,16 +5,25 @@ export default class BookList extends React.Component {
     if (!books.items) {
       return "";
     } else {
+        
         const newBookList = books.items.map(book => {
-        return (
-          <li className={book.volumeInfo.title}>
+        let myPrice = '';
+        if(book.saleInfo.saleability === 'FOR_SALE'){
+            myPrice = `$ ${book.saleInfo.listPrice.amount.toString()}`;
+        }
+        else if(book.saleInfo.saleability === 'NOT_FOR_SALE'){
+            myPrice = 'Not for sale.';
+        }
+        console.log(myPrice);
+            return (
+          <li className={book.volumeInfo.title} key={book.id}>
             <img
               src={book.volumeInfo.imageLinks.smallThumbnail}
               alt="picture of book cover"
             />
             <h3>{book.volumeInfo.title}</h3>
             <h4>{book.volumeInfo.authors}</h4>
-            <section>price</section>
+            <section>{myPrice}</section>
             <p>{book.volumeInfo.description}</p>
           </li>
         );
